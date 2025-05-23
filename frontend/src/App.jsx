@@ -54,11 +54,7 @@ const App = () => {
       {photoDataArray.map((photo) => (
         <PhotoListItem
           key={photo.id}
-          id={photo.id}
-          imageSource={photo.imageSource}
-          username={photo.username}
-          profile={photo.profile}
-          location={photo.location}
+          photo={photo}
         />
       ))}
     </div>
