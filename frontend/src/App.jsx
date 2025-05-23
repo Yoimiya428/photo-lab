@@ -1,9 +1,7 @@
 // frontend/src/App.jsx
 import React from 'react';
-
- // import PhotoListItem from './components/PhotoListItem';
- import PhotoList from './components/PhotoList';
- import './App.scss';
+import PhotoListItem from './components/PhotoListItem';
+import './App.scss';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -11,9 +9,9 @@ const sampleDataForPhotoListItem = {
     city: "Montreal",
     country: "Canada",
   },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+  imageSource: `/Image-1-Regular.jpeg`,
   username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+  profile: `/profile-1.jpg`,
 };
 
 
@@ -21,14 +19,7 @@ const sampleDataForPhotoListItem = {
 
 const App = () => (
   <div className="App">
-    <PhotoListItem
-      id={sampleDataForPhotoListItem.id}
-      imageSource={sampleDataForPhotoListItem.imageSource}
-      username={sampleDataForPhotoListItem.username}
-      profile={sampleDataForPhotoListItem.profile}
-      location={sampleDataForPhotoListItem.location}
-    />
+    <PhotoListItem photo={sampleDataForPhotoListItem} />
   </div>
 );
-
 export default App;

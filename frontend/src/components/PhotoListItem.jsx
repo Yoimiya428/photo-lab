@@ -1,8 +1,8 @@
 import "../styles/PhotoListItem.scss";
 
 
-const PhotoListItem = (props) => {
-  const { imageSource, username, profile, location } = props;
+const PhotoListItem = ({ photo }) => {
+  const { imageSource, username, profile, location } = photo;
 
   return (
     <div className="photo-list-item">
