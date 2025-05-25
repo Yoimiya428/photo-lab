@@ -1,12 +1,12 @@
 // frontend/src/App.jsx
 import React from 'react';
 
- // import PhotoListItem from './components/PhotoListItem';
- import PhotoList from './components/PhotoList';
- import TopicList from './components/TopicList';
- import TopNavigation from './components/TopNavigationBar';
+// import PhotoListItem from './components/PhotoListItem';
+//  import PhotoList from './components/PhotoList';
+//  import TopicList from './components/TopicList';
+//  import TopNavigation from './components/TopNavigationBar';
  import './App.scss';
-
+ import HomeRoute from './routes/HomeRoute';
 // const sampleDataForPhotoListItem = {
 //   id: "1",
 //   location: {
@@ -32,8 +32,7 @@ const App = () => (
   <div className="App">
     
     
-    <TopNavigation />
-    <PhotoList/>
+    <HomeRoute/>
   </div>
 )
 
