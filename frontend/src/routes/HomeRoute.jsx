@@ -1,12 +1,12 @@
 import '../styles/HomeRoute.scss';
 import React from 'react';
-import TopNavigationBar from '../components/TopNavigationBar';
+import TopNavigation from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 
 const HomeRoute = ({ photos, topics, favouritePhotos, toggleFavourite }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar isFavPhotoExist={favouritePhotos.length > 0} topics={topics} />
+      <TopNavigation isFavPhotoExist={favouritePhotos.length > 0} topics={topics} />
       <PhotoList
         photos={photos}
         favouritePhotos={favouritePhotos}
