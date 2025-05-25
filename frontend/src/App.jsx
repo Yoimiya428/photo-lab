@@ -4,6 +4,7 @@ import React from 'react';
  // import PhotoListItem from './components/PhotoListItem';
  import PhotoList from './components/PhotoList';
  import TopicList from './components/TopicList';
+ import TopNavigation from './components/TopNavigationBar';
  import './App.scss';
 
 // const sampleDataForPhotoListItem = {
@@ -29,8 +30,9 @@ import React from 'react';
 
 const App = () => (
   <div className="App">
-
-    <TopicList/>
+    
+    
+    <TopNavigation />
     <PhotoList/>
   </div>
 )
