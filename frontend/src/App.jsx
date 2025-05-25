@@ -1,7 +1,9 @@
 // frontend/src/App.jsx
 import React from 'react';
-import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
+
+ // import PhotoListItem from './components/PhotoListItem';
+ import PhotoList from './components/PhotoList';
+ import './App.scss';
 
 // const sampleDataForPhotoListItem = {
 //   id: "1",
@@ -24,42 +26,13 @@ import './App.scss';
 //   </div>
 // );
 
-const App = () => {
-  const photoDataArray = [
-    {
-      id: "1",
-      location: { city: "Montreal", country: "Canada" },
-      imageSource: "/Image-1-Regular.jpeg",
-      username: "Joe Example",
-      profile: "/profile-1.jpg"
-    },
-    {
-      id: "2",
-      location: { city: "Toronto", country: "Canada" },
-      imageSource: "/Image-2-Regular.jpeg",
-      username: "Some One",
-      profile: "/profile-1.jpg"
-    },
-    {
-      id: "3",
-      location: { city: "Ottawa", country: "Canada" },
-      imageSource: "/Image-3-Regular.jpeg",
-      username: "Some Two",
-      profile: "/profile-1.jpg"
-    }
-  ]
+const App = () => (
+  <div className="App">
+    {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
+    <PhotoList/>
+  </div>
+)
 
-  return (
-    <div className="App">
-      {photoDataArray.map((photo) => (
-        <PhotoListItem
-          key={photo.id}
-          photo={photo}
-        />
-      ))}
-    </div>
-  );
-};
 
 
 
