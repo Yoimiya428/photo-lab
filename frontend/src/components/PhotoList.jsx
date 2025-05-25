@@ -53,14 +53,13 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
-  return (
-    <ul className="photo-list">
-      {sampleDataForPhotoList.map((photo) => (
-        <PhotoListItem key={photo.id} photo={photo} />
-      ))}
-    </ul>
-  );
-};
+
+const PhotoList = ({ photos }) => (
+  <ul className="photo-list">
+    {photos.map((photo) => (
+      <PhotoListItem key={photo.id} photo={photo} />
+    ))}
+  </ul>
+);
 
 export default PhotoList;

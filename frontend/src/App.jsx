@@ -5,8 +5,10 @@ import React from 'react';
 //  import PhotoList from './components/PhotoList';
 //  import TopicList from './components/TopicList';
 //  import TopNavigation from './components/TopNavigationBar';
- import './App.scss';
- import HomeRoute from './routes/HomeRoute';
+import './App.scss';
+import HomeRoute from './routes/HomeRoute';
+import photos from "./mocks/photos";
+import topics from "./mocks/topics";
 // const sampleDataForPhotoListItem = {
 //   id: "1",
 //   location: {
@@ -30,9 +32,7 @@ import React from 'react';
 
 const App = () => (
   <div className="App">
-    
-    
-    <HomeRoute/>
+    <HomeRoute photos={photos} topics={topics} />
   </div>
 )
 
