@@ -6,10 +6,10 @@ import "../styles/TopicListItem.scss";
 //   label: "Nature",
 // };
 
-const TopicListItem = ({label}) => {
+const TopicListItem = ({title}) => {
   return (
     <div className="topic-list__item">
-      {label}
+      {title}
     </div>
   );
 };
