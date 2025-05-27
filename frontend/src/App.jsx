@@ -24,12 +24,17 @@ const App = () => {
     );
   };
 
-  const handlePhotoClick = (photo) => {
+
+  const openModal = (photo) => {
     setSelectedPhoto(photo);
   };
 
-  const closeModal = () => setSelectedPhoto(null);
+  const closeModal = () => {
+    setSelectedPhoto(null);
+  };
 
+
+  const similarPhotos = photos.filter(p => p.id !== selectedPhoto?.id);
 
   return (
     <div className="App">
@@ -38,10 +43,18 @@ const App = () => {
         topics={topics}
         favouritePhotos={favouritePhotos}
         toggleFavourite={toggleFavourite}
-        onPhotoClick={handlePhotoClick}
+        onPhotoClick={openModal}
       />
-      
-      {selectedPhoto && <PhotoDetailsModal photo={selectedPhoto} onClose={closeModal} />}
+      {selectedPhoto && (
+        <PhotoDetailsModal
+          photo={selectedPhoto}
+          onClose={closeModal}
+          similarPhotos={similarPhotos}
+          favouritePhotos={favouritePhotos}
+          toggleFavourite={toggleFavourite}
+          onPhotoClick={openModal}
+        />
+      )}
     </div>
   );
 };
