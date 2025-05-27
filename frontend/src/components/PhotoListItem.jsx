@@ -11,8 +11,10 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavourite, onPhotoClick }) =>
     
     <div className="photo-list__item">
 
-      
-      <PhotoFavButton isFavorited={isFavorited} onClick={handleFavClick} />
+      <div className="photo-list__fav-button-container">
+        <PhotoFavButton isFavorited={isFavorited} onClick={handleFavClick} />
+      </div>
+
       
       <img 
         className="photo-list__image" 
