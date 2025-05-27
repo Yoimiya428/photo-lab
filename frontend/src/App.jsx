@@ -9,8 +9,11 @@ import HomeRoute from './routes/HomeRoute';
 
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
-// Note: Rendering a single component to build components in isolation
 
+
+// Note: Rendering a single component to build components in isolation
+//import PhotoList from './components/PhotoList';
+//import TopicList from './components/TopicList';
 
 const App = () => {
   const {
@@ -29,6 +32,7 @@ const App = () => {
         toggleFavourite={updateToFavPhotoIds}
         onPhotoClick={setPhotoSelected}
       />
+
       {state.selectedPhoto && (
         <PhotoDetailsModal
           photo={state.selectedPhoto}
