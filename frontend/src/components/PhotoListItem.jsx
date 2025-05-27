@@ -4,18 +4,26 @@ import PhotoFavButton from './PhotoFavButton';
 
 
 const PhotoListItem = ({ photo, isFavorited, toggleFavourite, onPhotoClick }) => {
+
   const handleFavClick = () => toggleFavourite(photo.id);
 
   return (
+    
     <div className="photo-list__item">
 
+      
+      <PhotoFavButton isFavorited={isFavorited} onClick={handleFavClick} />
+      
       <img 
         className="photo-list__image" 
         src={photo.urls.regular} 
         alt={photo.alt_description} 
 
         onClick={() => onPhotoClick(photo)}
+
+        
       />
+      
       
 
       <div className="photo-list__user-details">
@@ -24,6 +32,8 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavourite, onPhotoClick }) =>
           src={photo.user.profile} 
           alt={`${photo.user.name} profile`}
         />
+
+      
         <div className="photo-list__user-info">
           <div>{photo.user.name}</div>
           <div className="photo-list__user-location">
@@ -32,7 +42,7 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavourite, onPhotoClick }) =>
         </div>
       </div>
       
-      <PhotoFavButton isFavorited={isFavorited} onClick={handleFavClick} />
+      
     </div>
   );
 };
