@@ -5,7 +5,7 @@ import PhotoListItem from './PhotoListItem';
 
 
 
-const PhotoList = ({ photos, favouritePhotos, toggleFavourite }) => {
+const PhotoList = ({ photos, favouritePhotos, toggleFavourite, onPhotoClick }) => {
   return (
     <div className="photo-list">
       {photos.map(photo => (
@@ -14,6 +14,8 @@ const PhotoList = ({ photos, favouritePhotos, toggleFavourite }) => {
           photo={photo}
           isFavorited={favouritePhotos.includes(photo.id)}
           toggleFavourite={toggleFavourite}
+
+          onPhotoClick={onPhotoClick}
         />
       ))}
     </div>

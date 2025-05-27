@@ -3,19 +3,21 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
 
 
-const PhotoListItem = ({ photo, isFavorited, toggleFavourite }) => {
-  const handleClick = () => toggleFavourite(photo.id);
+const PhotoListItem = ({ photo, isFavorited, toggleFavourite, onPhotoClick }) => {
+  const handleFavClick = () => toggleFavourite(photo.id);
 
   return (
     <div className="photo-list__item">
-      {/* Main photo with proper class name */}
+
       <img 
         className="photo-list__image" 
         src={photo.urls.regular} 
         alt={photo.alt_description} 
+
+        onClick={() => onPhotoClick(photo)}
       />
       
-      {/* User details section - this was missing! */}
+
       <div className="photo-list__user-details">
         <img 
           className="photo-list__user-profile"
@@ -30,8 +32,7 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavourite }) => {
         </div>
       </div>
       
-      {/* Favorite button */}
-      <PhotoFavButton isFavorited={isFavorited} onClick={handleClick} />
+      <PhotoFavButton isFavorited={isFavorited} onClick={handleFavClick} />
     </div>
   );
 };

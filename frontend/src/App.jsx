@@ -7,12 +7,14 @@ import HomeRoute from './routes/HomeRoute';
 import photos from "./mocks/photos";
 import topics from "./mocks/topics";
 
-
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 // Note: Rendering a single component to build components in isolation
 
 
 const App = () => {
   const [favouritePhotos, setFavouritePhotos] = useState([]);
+
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const toggleFavourite = (photoId) => {
     setFavouritePhotos((prev) =>
@@ -22,6 +24,14 @@ const App = () => {
     );
   };
 
+  const handlePhotoClick = (photo) => {
+    setSelectedPhoto(photo);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPhoto(null);
+  };
+
   return (
     <div className="App">
       <HomeRoute
@@ -29,7 +39,12 @@ const App = () => {
         topics={topics}
         favouritePhotos={favouritePhotos}
         toggleFavourite={toggleFavourite}
+        onPhotoClick={handlePhotoClick}
       />
+      
+      {selectedPhoto && (
+        <PhotoDetailsModal onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

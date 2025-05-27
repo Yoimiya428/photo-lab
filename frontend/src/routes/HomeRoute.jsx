@@ -4,7 +4,7 @@ import TopNavigation from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 
 
-const HomeRoute = ({ photos, topics, favouritePhotos, toggleFavourite }) => {
+const HomeRoute = ({ photos, topics, favouritePhotos, toggleFavourite,  onPhotoClick }) => {
   return (
     <div className="home-route">
       <TopNavigation
@@ -15,6 +15,7 @@ const HomeRoute = ({ photos, topics, favouritePhotos, toggleFavourite }) => {
         photos={photos}
         favouritePhotos={favouritePhotos}
         toggleFavourite={toggleFavourite}
+        onPhotoClick={onPhotoClick} 
       />
     </div>
   );
