@@ -31,22 +31,23 @@ const PhotoDetailsModal = ({ photo, onClose, similarPhotos, favouritePhotos, tog
       </button>
 
       <div className="photo-details-modal__images">
+        <div className="photo-details-modal__image-container">
+          <div className="photo-details-modal__fav-button">
+            <PhotoFavButton
+              isFavorited={favouritePhotos.includes(photo.id)}
+              onClick={() => {
+                console.log(`Toggling favourite for photo ID: ${photo.id}`);
+                toggleFavourite(photo.id);
+              }}
+            />
+          </div>
 
-        <PhotoFavButton
-            isFavorited={favouritePhotos.includes(photo.id)}
-            onClick={() => {
-              console.log(`Toggling favourite for photo ID: ${photo.id}`);
-              toggleFavourite(photo.id);
-            }}
+          <img
+            className="photo-details-modal__image"
+            src={photo.urls.full}
+            alt={photo.alt_description}
           />
-
-        <img
-          className="photo-details-modal__image"
-          src={photo.urls.full}
-          alt={photo.alt_description}
-        />
-
-
+        </div>
 
         <div className="photo-details-modal__photographer-details">
           <img
@@ -63,10 +64,7 @@ const PhotoDetailsModal = ({ photo, onClose, similarPhotos, favouritePhotos, tog
               </div>
             )}
           </div>
-
-
         </div>
-
       </div>
 
       <div className="photo-details-modal__header">

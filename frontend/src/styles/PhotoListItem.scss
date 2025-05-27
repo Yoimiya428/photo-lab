@@ -7,6 +7,12 @@ div.photo-list__item {
   border-radius: 8px;
   max-width: fit-content;
 
+
+  div.photo-list__image-container {
+    position: relative;
+    display: inline-block;
+  }
+
   img.photo-list__image {
     user-select: none;
     width: 300px;
@@ -16,6 +22,14 @@ div.photo-list__item {
 
     position: relative;
   }
+
+  div.photo-list__fav-button-container {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 1;
+  }
+
 
   div.photo-list__user-details {
     display: flex;
@@ -41,6 +55,10 @@ div.photo-list__item {
       font-size: 0.9rem;
       color: #666;
     }
+
+    
+
+
     }
   }
 }
