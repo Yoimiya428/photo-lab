@@ -20,12 +20,12 @@ import closeSymbol from '../assets/closeSymbol.svg';
 const PhotoDetailsModal = ({ onClose }) => {
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={onClose}>
+      <button
+        className="photo-details-modal__close-button"
+        onClick={onClose}
+      >
         <img src={closeSymbol} alt="close symbol" />
       </button>
-
-      {/* Empty modal body for now */}
-      <div className="photo-details-modal__content" />
     </div>
   );
 };

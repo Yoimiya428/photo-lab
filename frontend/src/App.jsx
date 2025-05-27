@@ -28,9 +28,8 @@ const App = () => {
     setSelectedPhoto(photo);
   };
 
-  const handleCloseModal = () => {
-    setSelectedPhoto(null);
-  };
+  const closeModal = () => setSelectedPhoto(null);
+
 
   return (
     <div className="App">
@@ -42,9 +41,7 @@ const App = () => {
         onPhotoClick={handlePhotoClick}
       />
       
-      {selectedPhoto && (
-        <PhotoDetailsModal onClose={handleCloseModal} />
-      )}
+    {selectedPhoto && <PhotoDetailsModal onClose={closeModal} />}
     </div>
   );
 };
