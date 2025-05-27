@@ -17,7 +17,9 @@
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ onClose }) => {
+const PhotoDetailsModal = ({ photo, onClose }) => {
+  console.log("Photo data:", photo);
+
   return (
     <div className="photo-details-modal">
       <button
