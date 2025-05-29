@@ -1,102 +1,97 @@
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect} from 'react';
 import photos from '../mocks/photos';
 import topics from '../mocks/topics';
 
-//import axios from 'axios';
+//new imported
+import axios from "axios";
+
 
 export const ACTIONS = {
-  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
-  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  TOGGLE_FAV_PHOTO: "TOGGLE_FAV_PHOTO",
+  SET_SELECTED_PHOTO: "SET_SELECTED_PHOTO",
+  CLOSE_MODAL: "CLOSE_MODAL"
 };
 
-function reducer(state, action) {
+
+const initialState = {
+  photoData: [],
+  topicData: [],
+  favouritePhotos: [],
+  selectedPhoto: null
+};
+
+const reducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.FAV_PHOTO_ADDED:
-      return {
-        ...state,
-        favouritePhotos: [...state.favouritePhotos, action.payload.id]
-      };
-    
-    case ACTIONS.FAV_PHOTO_REMOVED:
-      return {
-        ...state,
-        favouritePhotos: state.favouritePhotos.filter(id => id !== action.payload.id)
-      };
     
     case ACTIONS.SET_PHOTO_DATA:
+      return { ...state, photoData: action.payload };
+    
+      case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
+
+    case ACTIONS.TOGGLE_FAV_PHOTO:
+      const { id } = action.payload;
+      const isFavourite = state.favouritePhotos.includes(id);
+    
       return {
         ...state,
-        photos: action.payload.photos
+        favouritePhotos: isFavourite
+          ? state.favouritePhotos.filter(photoId => photoId !== id)
+          : [...state.favouritePhotos, id]
       };
-    
-    case ACTIONS.SET_TOPIC_DATA:
-      return {
-        ...state,
-        topics: action.payload.topics
-      };
-    
-    case ACTIONS.SELECT_PHOTO:
-      return {
-        ...state,
-        selectedPhoto: action.payload.photo
-      };
-    
-    case ACTIONS.DISPLAY_PHOTO_DETAILS:
-      return {
-        ...state,
-        selectedPhoto: action.payload.photo
-      };
-    
+    case ACTIONS.SET_SELECTED_PHOTO:
+      return { ...state, selectedPhoto: action.payload };
+    case ACTIONS.CLOSE_MODAL:
+      return { ...state, selectedPhoto: null };
     default:
-      throw new Error(
-        `Tried to reduce with unsupported action type: ${action.type}`
-      );
+      return state;
   }
-}
+};
 
 const useApplicationData = () => {
- 
-  const initialState = {
-    photos: photos, 
-    topics: topics, 
-    favouritePhotos: [],
-    selectedPhoto: null,
-  };
-
   const [state, dispatch] = useReducer(reducer, initialState);
 
 
-  const updateToFavPhotoIds = (photoId) => {
-    const isFavourited = state.favouritePhotos.includes(photoId);
-    
-    if (isFavourited) {
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
-    } else {
-      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId } });
-    }
+  useEffect(() => {
+    axios.get("/api/photos")
+      .then(res => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: res.data });
+      })
+      .catch(err => console.error("Error fetching photos:", err));
+  }, []);
+
+
+  useEffect(() => {
+    axios.get("/api/topics")
+      .then(res => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: res.data });
+      })
+      .catch(err => console.error("Error fetching topics:", err));
+  }, []);
+
+
+  const toggleFavPhoto = (id) => {
+    dispatch({ type: ACTIONS.TOGGLE_FAV_PHOTO, payload: { id } });
   };
 
-
-  const setPhotoSelected = (photo) => {
-    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
+  const setSelectedPhoto = (photo) => {
+    dispatch({ type: ACTIONS.SET_SELECTED_PHOTO, payload: photo });
   };
 
-
-  const onClosePhotoDetailsModal = () => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { photo: null } });
+  const closeModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
   return {
     state,
-    updateToFavPhotoIds,
-    setPhotoSelected,
-    onClosePhotoDetailsModal,
+    toggleFavPhoto,
+    setSelectedPhoto,
+    closeModal
   };
 };
+
 
 
 export default useApplicationData;

@@ -36,15 +36,9 @@ const App = () => {
       {state.selectedPhoto && (
         <PhotoDetailsModal
           photo={state.selectedPhoto}
-          onClose={onClosePhotoDetailsModal}
+          closeModal={closeModal}
           favouritePhotos={state.favouritePhotos}
-          toggleFavourite={updateToFavPhotoIds}
-          onPhotoClick={setPhotoSelected}
-          similarPhotos={state.photos.filter(
-            (p) =>
-              p.id !== state.selectedPhoto.id &&
-              p.topic === state.selectedPhoto.topic
-          )}
+          toggleFavourite={toggleFavPhoto}
         />
       )}
     </div>
