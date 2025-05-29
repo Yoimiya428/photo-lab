@@ -10,7 +10,7 @@ import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
-
+import TopNavigation from './components/TopNavigation';
 // Note: Rendering a single component to build components in isolation
 //import PhotoList from './components/PhotoList';
 //import TopicList from './components/TopicList';
@@ -20,11 +20,18 @@ const App = () => {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
+    fetchPhotosByTopic
   } = useApplicationData();
 
   return (
     <div className="App">
+
+      <TopNavigation
+        topics={state.topicData}
+        onTopicSelect={fetchPhotosByTopic}
+      />
+
       <HomeRoute
         topics={state.topics}
         photos={state.photos}
@@ -35,11 +42,11 @@ const App = () => {
 
       {state.selectedPhoto && (
         <PhotoDetailsModal
-          photo={state.selectedPhoto}
-          closeModal={closeModal}
-          favouritePhotos={state.favouritePhotos}
-          toggleFavourite={toggleFavPhoto}
-        />
+        photo={state.selectedPhoto}
+        closeModal={onClosePhotoDetailsModal} 
+        favouritePhotos={state.favouritePhotos}
+        toggleFavourite={updateToFavPhotoIds} 
+      />
       )}
     </div>
   );

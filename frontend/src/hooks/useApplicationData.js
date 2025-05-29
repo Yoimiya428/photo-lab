@@ -92,6 +92,13 @@ const useApplicationData = () => {
   };
 };
 
-
+const fetchPhotosByTopic = (topicId) => {
+  fetch(`/api/topics/${topicId}/photos`)
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+    })
+    .catch((err) => console.error("Error fetching topic photos:", err));
+};
 
 export default useApplicationData;
