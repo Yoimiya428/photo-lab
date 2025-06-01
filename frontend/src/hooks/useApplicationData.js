@@ -93,9 +93,7 @@ const useApplicationData = () => {
   const setPhotoSelected = (photo) => {    
     dispatch({ type: ACTIONS.SET_SELECTED_PHOTO, payload: photo });
 
-    // if (photo && photo.id) {
-    //   fetchSimilarPhotos(photo.id);
-    // }
+
   };
 
   const onClosePhotoDetailsModal = () => { 
@@ -112,13 +110,7 @@ const useApplicationData = () => {
     });
   };
 
-  // const fetchSimilarPhotos = (photo_id) => {
 
-  //   axios.get(`http://localhost:8001/api/photos/${photo_id}/similar`)
-  //     .then(res => {
-  //       dispatch({ type: ACTIONS.SET_SIMILAR_PHOTOS, payload: res.data });
-  //     })
-  //   };
     
     
   return {
