@@ -1,17 +1,3 @@
-// import '../styles/PhotoDetailsModal.scss'
-// import closeSymbol from '../assets/closeSymbol.svg';
-
-// const PhotoDetailsModal = () => {
-//   return (
-//     <div className="photo-details-modal">
-//       <button className="photo-details-modal__close-button">
-//         <img src={closeSymbol} alt="close symbol" />
-//       </button>
-//     </div>
-//   )
-// };
-
-// export default PhotoDetailsModal;
 
 
 import '../styles/PhotoDetailsModal.scss';
@@ -21,12 +7,12 @@ import PhotoFavButton from "../components/PhotoFavButton";
 
 import React from "react";
 
-const PhotoDetailsModal = ({ photo, onClose, similarPhotos, favouritePhotos, toggleFavourite, onPhotoClick }) => {
+const PhotoDetailsModal = ({ photo, closeModal, similarPhotos, favouritePhotos, toggleFavourite, onPhotoClick }) => {
   if (!photo) return null;
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={onClose}>
+      <button className="photo-details-modal__close-button" onClick={closeModal}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
 

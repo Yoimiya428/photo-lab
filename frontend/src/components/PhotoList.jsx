@@ -5,7 +5,7 @@ import PhotoListItem from './PhotoListItem';
 
 
 
-const PhotoList = ({ photos, favouritePhotos, toggleFavourite, onPhotoClick }) => {
+const PhotoList = ({ photos = [], favouritePhotos = [], toggleFavourite, onPhotoClick }) => {
   return (
     <div className="photo-list">
       {photos.map(photo => (
